@@ -10,7 +10,7 @@ int main()
 	setlocale(LC_ALL, "rus");
 	char* str;
 	int n;
-	printf("Введите кол-во символов в строке: ");
+	printf("Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«-ГўГ® Г±ГЁГ¬ГўГ®Г«Г®Гў Гў Г±ГІГ°Г®ГЄГҐ: ");
 	scanf_s("%d", &n);
 	n++;
 	str = (char*)calloc(n, sizeof(char));
@@ -31,7 +31,7 @@ void deletefirstword(char* str, int n)
 		{
 			str[k] = str[k + 1];
 		}
-		return 1;
+		return;
 	}
 	else
 	{
