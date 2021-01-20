@@ -47,12 +47,12 @@ void wordsize(char* str)
     if (str[endmin+1] == '\n' || str[endmin+1] == '\0')
         return;
     else
-    sizeNextWord(str, endmin, startmin, len);
+    sizeNextWord(str, endmin, startmin, min);
 }
 
 void sizeNextWord(char* str, int endmin, int startmin, int lenmin)
 {
-    int start = 0, end = 0;
+    int start = 0, end = 0, len =0;
     int i = endmin + 2;
     while (str[i] != ' ' && str[i] != '\0' && str[i] != '\n')
     {
@@ -60,27 +60,36 @@ void sizeNextWord(char* str, int endmin, int startmin, int lenmin)
         while (str[i] != ' ' && str[i] != '\n' && str[i] != '\0')
             i++;
         end = i - 1 ;
+        len = start - end +1;
     }
     int j;
-    for (i = startmin, j = end; i < j; i++, j--)
+    if (len == lenmin)
     {
-        char temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
+        printf("Words are the same size, try again");
+        return 0;
     }
+    else
+    {
+        for (i = startmin, j = end; i < j; i++, j--)
+        {
+            char temp = str[i];
+            str[i] = str[j];
+            str[j] = temp;
+        }
 
-    for (i = startmin, j = startmin + lenmin - 1; i < j; i++, j--)
-    {
-        char temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-    }
-    for (i = startmin + lenmin + 1, j = end; i < j; i++, j--)
-    {
-        char temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-    }
+        for (i = startmin, j = startmin + len - 1; i < j; i++, j--)
+        {
+            char temp = str[i];
+            str[i] = str[j];
+            str[j] = temp;
+        }
+        for (i = startmin + len + 1, j = end; i < j; i++, j--)
+        {
+            char temp = str[i];
+            str[i] = str[j];
+            str[j] = temp;
+        }
 
-    puts(str);
+        puts(str);
+    }
 }
